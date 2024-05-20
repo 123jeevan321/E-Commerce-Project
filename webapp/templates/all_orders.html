@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    All Orders
+{% endblock %}
+
+{% block content %}
+    <h1>All Orders</h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Username</th>
+                <th>Product Image</th>
+                <th>Destination City</th>
+
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Payment Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order['order_id'] }}</td>
+                    <td>{{ order['date'] }}</td>
+                    <td>{{ order['username'] }}</td>
+                    <td><img src="/static/{{ order['variant_image'] }}" alt="Product Image" class="variant-img"></td>
+                    <td>{{ order['destination_city'] }}</td>
+
+                    <td>{{ order['quantity'] }}</td>
+                    <td> ₹ {{ order['quantity'] * order['price'] }}</td>
+                    <td>{{ order['payment_method'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <style>
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 70, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .styled-table:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .styled-table th {
+            background-color: rgba(69, 58, 45, 0.9);
+            background-color: #22092C;
+            color: #fff;
+            padding: 15px 30px;
+            text-align: center;
+        }
+
+        .styled-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .variant-img {
+            max-width: 50px;
+            max-height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    </style>
+{% endblock %}

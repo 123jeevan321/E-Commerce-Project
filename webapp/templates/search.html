@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+ <div class="search-bar my-4">
+  <form class="form-inline justify-content-center"   action="/search" method="GET">
+    <input class="form-control mr-3" type="search" name="query" placeholder="Search" aria-label="Search"
+           style="width: 700px; height: 50px; padding:10px; font-size:20px; font-weight:700">
+    <button class="btn btn-outline-primary" type="submit"
+            style="width: 60px; height: 50px; padding:1px; font-size:20px;
+             font-weight:700; background-color:transparent;
+                color:white; border:0;">Search  <i class="fa-brands fa-searchengin"></i> </button>
+  </form>
+</div>
+
+{% endblock %}

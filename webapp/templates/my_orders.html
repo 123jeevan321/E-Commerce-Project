@@ -1,0 +1,149 @@
+{% extends 'layout.html' %}
+
+{% block title %} My Orders {% endblock %}
+
+{% block content %}
+<head>
+  <title>My Orders</title>
+  <style>
+    @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.01);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+     table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 70, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    table:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+ .trhead{
+
+    }
+    /* Style for table header */
+    th {
+    background-color:#22092C;
+        color: #fff;
+<!--      background-color: rgba(69, 58, 45,0.9);-->
+      color: #fff;
+      padding: 15px 30px;
+      text-align: center;
+
+    }
+
+    /* Style for table rows */
+    tr:nth-child(even) {
+      background-color: rgba(242, 242, 242,0.5);
+    }
+
+    /* Style for table cells */
+    td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    /* Style for h1 */
+    h1 {
+      color: #453a2d;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Style for the message paragraph */
+    p {
+      color: #453a2d;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .variant-img {
+      max-width: 50px;
+      max-height: 35px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    /* Style for the buttons */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #453a2d;
+      border: none;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+    .btn-secondary {
+      background-color: #808080;
+    }
+
+    .btn:hover {
+      background-color: #634f3e;
+      transform: scale(1.05);
+      color:#fff
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Your Orders - {{ username }}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th style="width:130px;">Date</th>
+        <th>Product Image</th>
+        <th>Product Name</th>
+<!--        <th>Delivery Method</th>-->
+        <th>Destination City</th>
+        <th>Estimated Days</th>
+        <th>Quantity</th>
+
+        <th>Price</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in order_details %}
+      <tr>
+        <td>{{ order[1] }}</td>
+        <td>{{ order[0] }}</td>
+        <td><img src="/static/{{ order[10] }}" alt="Product Image" class= "variant-img"></td> <!-- Adjust the index if necessary -->
+        <td>{{ order[9] }}</td>
+        <!--        <td>{{ order[2] }}</td>-->
+        <td>{{ order[5] }}</td>
+        <td>{{ order[6] }}</td>
+        <td>{{ order[7] }}</td>
+
+        <td style="width:130px;">₹ {{ order[7] * order[8] }}</td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<!--<h2>Total Order Price: ₹ {{ total_order_price }}</h2>-->
+</body>
+
+{% endblock %}

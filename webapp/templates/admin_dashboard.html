@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+
+{% block content %}
+<style>
+    /* CSS for the modules */
+    .module {
+        width: 48%;
+        float: left;
+        margin: 1%;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: transform 0.3s, background-color 0.3s; /* Add transition effect */
+    }
+
+    /* Clear float */
+    .module::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Add hover effect */
+    .module:hover {
+        transform: scale(1.1); /* Scale up the size on hover */
+        background:linear-gradient(to top,#22092c,salmon) ; /* Change background color on hover */
+        color:black;
+    }
+
+    /* Responsive design */
+    @media screen and (max-width: 768px) {
+        .module {
+            width: 100%;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+    }
+     h1 {
+      color: #453a2d;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+</style>
+    <h1>Welcome to the Admin Dashboard</h1>
+<!--"{{ url_for('all_users_page') }}"-->
+  <a href="{{ url_for('all_users_page') }}">
+    <div class="module">
+        <h2>View All Users</h2>
+        <!-- Add code to display all users here -->
+<!--        <p>This module will display a list of all users.</p>-->
+        <!-- You can customize the layout and content here -->
+    </div>
+</a>
+<!--{{ url_for('all_orders_page') }}-->
+<a href="{{ url_for('all_orders_page') }}">
+    <div class="module">
+        <h2>View All Orders</h2>
+        <!-- Add code to display all orders here -->
+<!--        <p>This module will display a list of all orders.</p>-->
+        <!-- You can customize the layout and content here -->
+    </div>
+</a>
+<!--    <a href="{{ url_for('logout') }}">Logout</a>-->
+{% endblock %}
+
